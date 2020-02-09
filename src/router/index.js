@@ -30,7 +30,8 @@ const routes = [
   },
   {
     path: "*",
-    name: "/"
+    name: "Home",
+    component: Home
   }
 ];
 
