@@ -68,3 +68,51 @@
     </p>
   </div>
 </template>
+
+<script>
+import firebase from "firebase";
+export default {
+  data() {
+    return {
+      displayName: null,
+      email: null,
+      passOne: null,
+      passTwo: null,
+      error: null
+    };
+  },
+  methods: {
+    register() {
+      const info = {
+        email: this.email,
+        password: this.passOne,
+        displayName: this.displayName
+      };
+      if (!this.error) {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(info.email, info.password)
+          .then(
+            () => this.$router.replace("meetings"),
+            error => (this.error = error.message)
+          );
+      } else {
+        this.error = "Ошибка формы";
+      }
+    }
+  },
+  watch: {
+    passTwo: function() {
+      if (
+        this.passOne !== "" &&
+        this.passTwo !== "" &&
+        this.passTwo !== this.passOne
+      ) {
+        this.error = "passwords must match";
+      } else {
+        this.error = null;
+      }
+    }
+  }
+};
+</script>

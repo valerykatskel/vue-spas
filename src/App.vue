@@ -8,6 +8,7 @@
 <script>
 import Navigation from "./components/Navigation.vue";
 import firebase from "firebase";
+import db from "./db.js";
 export default {
   name: "app",
   data: function() {
@@ -16,6 +17,7 @@ export default {
     };
   },
   mounted() {
+    db.firestore();
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.user = user.email;
