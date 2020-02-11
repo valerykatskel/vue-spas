@@ -32,22 +32,9 @@
 
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import db from "../db.js";
 export default {
   name: "home",
-  data: function() {
-    return {
-      user: null
-    };
-  },
-  mounted() {
-    db.collection("users")
-      .doc("4umVjzruG0suT3dYeeyz")
-      .get()
-      .then(snapshot => {
-        this.user = snapshot.data().name;
-      });
-  },
+  props: ["user"],
   components: { FontAwesomeIcon }
 };
 </script>
