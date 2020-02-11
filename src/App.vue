@@ -14,5 +14,6 @@ export default {
 </script>
 
 <style lang="scss">
+$primary: #05b2dd;
 @import "~bootstrap/scss/bootstrap";
 </style>
