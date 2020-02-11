@@ -20,7 +20,7 @@ export default {
     db.firestore();
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.user = user.email;
+        this.user = user.displayName;
       }
     });
   },
